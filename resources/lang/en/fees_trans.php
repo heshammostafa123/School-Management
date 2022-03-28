@@ -1,0 +1,21 @@
+<?php
+return[
+    'study_fees'=>'Study Fees',
+    'add'=>'Add New Fees',
+    'edit'=>'Edit Fee',
+    'name'=>'Name',
+    'amount'=>'Amount',
+    'grade'=>'Grad',
+    'class'=>'Class',
+    'year'=>'Year',
+    'desc'=>'Description',
+    'process'=>'Process',
+    'name_ar'=>'name Ar',
+    'name_en'=>'name En',
+    'fee_type'=>'Fees Type',
+    'studying_fees'=>'Studying Fees ',
+    'bus_fees'=>'Bus_Fees',
+    'notes'=>'Notes',
+    'confirm'=>'Confirm',
+    'delete'=>'Are you sure with the deletion process?',
+];
