@@ -17,7 +17,7 @@ class AddParent extends Component
     use WithFileUploads;
     public $successMessage = '';
 
-    public $catchError,$updateMode = false,$photos,$show_table = true,$Parent_id;
+    public $catchError,$show_table = true,$updateMode = false,$photos,$Parent_id;
 
     public $currentStep = 1,
 
@@ -36,6 +36,20 @@ class AddParent extends Component
         $Nationality_Mother_id, $Blood_Type_Mother_id,
         $Address_Mother, $Religion_Mother_id;
 
+    public function render()
+    {
+        return view('livewire.add-parent', [
+            'Nationalities' => Nationalitie::all(),
+            'Type_Bloods' => Type_Blood::all(),
+            'Religions' => Religion::all(),
+            'my_parents' => My_Parent::all(),
+        ]);
+    }
+
+    public function showformadd(){
+        $this->show_table = false;
+    }
+
     //realtime validation
     public function updated($propertyName)
     {
@@ -50,19 +64,7 @@ class AddParent extends Component
         ]);
     }
 
-    public function render()
-    {
-        return view('livewire.add-parent', [
-            'Nationalities' => Nationalitie::all(),
-            'Type_Bloods' => Type_Blood::all(),
-            'Religions' => Religion::all(),
-            'my_parents' => My_Parent::all(),
-        ]);
-    }
 
-    public function showformadd(){
-        $this->show_table = false;
-    }
 
     public function firstStepSubmit()
     {

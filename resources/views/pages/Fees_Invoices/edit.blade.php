@@ -42,7 +42,12 @@
 
                             <div class="form-group col">
                                 <label for="inputEmail4">{{ trans('invoice_trans.amount') }}</label>
-                                <input type="number" value="{{$fee_invoices->amount}}" name="amount" class="form-control">
+                                <select class="custom-select mr-sm-2" name="amount" required>
+                                    @foreach($fees as $fee)
+                                            <option value="{{ $fee->amount }}" {{ $fee->amount==$fee_invoices->amount?'selected':'' }}>{{ $fee->amount }}</option>
+                                    @endforeach
+                                </select>
+                                {{-- <input type="number" value="{{$fee_invoices->amount}}" name="amount" class="form-control"> --}}
                             </div>
 
                         </div>

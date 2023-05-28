@@ -24,7 +24,11 @@ class LoginController extends Controller
     public function login(Request $request){
         if (Auth::guard($this->chekGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
            return $this->redirect($request);
-        }     
+        }
+        toastr()->error("البيانات غير صحيحه");
+        return redirect()->back();    
+        // return redirect()->back()->with('message','البيانات غير صحيحه');     
+
     }
 
     public function logout(Request $request,$type)

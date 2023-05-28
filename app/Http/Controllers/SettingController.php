@@ -15,6 +15,7 @@ class SettingController extends Controller
         $setting['setting'] = $collection->flatMap(function ($collection) {
             return [$collection->key => $collection->value];
         });
+
         return view('pages.setting.index', $setting);
     }
     public function update(Request $request)

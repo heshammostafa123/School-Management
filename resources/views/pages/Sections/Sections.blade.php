@@ -58,19 +58,16 @@
                                                                 <thead>
                                                                 <tr class="text-dark">
                                                                     <th>#</th>
-                                                                    <th>{{ trans('Sections_trans.Name_Section') }}
-                                                                    </th>
+                                                                    <th>{{ trans('Sections_trans.Name_Section') }}</th>
                                                                     <th>{{ trans('Sections_trans.Name_Class') }}</th>
                                                                     <th>{{ trans('Sections_trans.Status') }}</th>
                                                                     <th>{{ trans('Sections_trans.Processes') }}</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <?php $i = 0; ?>
                                                                 @foreach ($Grade->Sections as $list_Sections)
                                                                     <tr>
-                                                                        <?php $i++; ?>
-                                                                        <td>{{ $i }}</td>
+                                                                        <td>{{ $loop->iteration }}</td>
                                                                         <td>{{ $list_Sections->Name_Section }}</td>
                                                                         <td>{{ $list_Sections->My_classs->Name_Class }}
                                                                         </td>
@@ -157,13 +154,13 @@
                                                                                                     class="custom-select"
                                                                                                     onclick="console.log($(this).val())">
                                                                                                 <!--placeholder-->
-                                                                                                <option
+                                                                                                {{-- <option
                                                                                                     value="{{ $Grade->id }}">
                                                                                                     {{ $Grade->Name }}
-                                                                                                </option>
+                                                                                                </option> --}}
                                                                                                 @foreach ($list_Grades as $list_Grade)
                                                                                                     <option
-                                                                                                        value="{{ $list_Grade->id }}">
+                                                                                                        value="{{ $list_Grade->id }}" {{$list_Grade->id==$Grade->id?'selected':''}}>
                                                                                                         {{ $list_Grade->Name }}
                                                                                                     </option>
                                                                                                 @endforeach
@@ -207,12 +204,14 @@
                                                                                                     <div class="col">
                                                                                                         <label for="inputName" class="control-label">{{ trans('Sections_trans.Name_Teacher') }}</label>
                                                                                                         <select multiple name="teacher_id[]" class="form-control" id="exampleFormControlSelect2">
-                                                                                                            @foreach($list_Sections->teachers as $teacher)
+                                                                                                            {{-- @foreach($list_Sections->teachers as $teacher)
                                                                                                                 <option selected value="{{$teacher['id']}}">{{$teacher['Name']}}</option>
-                                                                                                            @endforeach
+                                                                                                            @endforeach --}}
 
                                                                                                             @foreach($teachers as $teacher)
-                                                                                                                <option value="{{$teacher->id}}">{{$teacher->Name}}</option>
+                                                                                                                <option value="{{$teacher->id}}" @if($list_Sections->teachers->contains($teacher->id))
+                                                                                                                    {{ 'selected' }}
+                                                                                                                @endif>{{$teacher->Name}}</option>
                                                                                                             @endforeach
                                                                                                         </select>
                                                                                                     </div>

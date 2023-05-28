@@ -33,8 +33,8 @@ return [
     'Exams'=>'الامتحانات',
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
-    'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'هشام مصطفي',
+    'Copyright' => 'حقوق النشر ',
+    'Name_Programer' => 'جميع الحقوق محفوظة',
 
 
 

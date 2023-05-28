@@ -82,7 +82,7 @@ class GradeController extends Controller
   public function update(StoreGrades $request)
   {
     try {
-      $validated = $request->validated();
+      //$validated = $request->validated();
       $Grades = Grade::findOrFail($request->id);
       $Grades->update([
         $Grades->Name = ['ar' => $request->Name, 'en' => $request->Name_en],
@@ -103,6 +103,7 @@ class GradeController extends Controller
    */
   public function destroy(Request $request)
   {
+    //delete grade that doesn't have class
     $myclass_id=Classroom::where('Grade_id',$request->id)->pluck('Grade_id');
     if($myclass_id->count()==0){
       $Grades = Grade::findOrFail($request->id)->delete();

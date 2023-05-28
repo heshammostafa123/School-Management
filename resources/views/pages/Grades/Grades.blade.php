@@ -46,11 +46,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0; ?>
                             @foreach ($Grades as $Grade)
                                 <tr>
-                                    <?php $i++; ?>
-                                    <td>{{ $i }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $Grade->Name }}</td>
                                     <td>{{ $Grade->Notes }}</td>
                                     <td>
@@ -95,7 +93,7 @@
                                                                 value="{{ $Grade->getTranslation('Name', 'ar') }}"
                                                                 required>
                                                             <input id="id" type="hidden" name="id"
-                                                                class="form-control" value="50">
+                                                                class="form-control" value="{{$Grade->id}}">
                                                         </div>
                                                         <div class="col">
                                                             <label for="Name_en"

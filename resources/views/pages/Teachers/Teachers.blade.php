@@ -38,11 +38,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <?php $i = 0; ?>
                                         @foreach($Teachers as $Teacher)
                                             <tr>
-                                            <?php $i++; ?>
-                                            <td>{{ $i }}</td>
+                                            <td>{{ $loop->iteration}}</td>
                                             <td>{{$Teacher->Name}}</td>
                                             <td>{{$Teacher->genders->Name}}</td>
                                             <td>{{$Teacher->Joining_Date}}</td>

@@ -69,6 +69,30 @@
     });
 </script>
 
+<script>
+    $(document).ready(function () {
+        $('select[name="Grade_id_new"]').on('change', function () {
+            var Grade_id = $(this).val();
+            if (Grade_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Classroom_id_new"]').empty();
+                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
 
 <script>
     $(document).ready(function () {
@@ -95,33 +119,6 @@
 </script>
 
 
-
-
-
-<script>
-    $(document).ready(function () {
-        $('select[name="Grade_id_new"]').on('change', function () {
-            var Grade_id = $(this).val();
-            if (Grade_id) {
-                $.ajax({
-                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function (data) {
-                        $('select[name="Classroom_id_new"]').empty();
-                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
-                        $.each(data, function (key, value) {
-                            $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
-                        });
-                    },
-                });
-            }
-            else {
-                console.log('AJAX load did not work');
-            }
-        });
-    });
-</script>
 
 
 <script>

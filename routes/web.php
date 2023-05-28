@@ -84,8 +84,6 @@ Route::group(
 
 		//=====================students===
 		Route::resource('Students',StudentController::class);
-		Route::get('/Get_classrooms/{id}',[StudentController::class,'Get_classrooms']);
-        Route::get('/Get_Sections/{id}', [StudentController::class,'Get_Sections']);
 		Route::post('Upload_attachment', [StudentController::class,'Upload_attachment'])->name('Upload_attachment');
         Route::get('Download_attachment/{studentsname}/{filename}',[StudentController::class,'Download_attachment'])->name('Download_attachment');
         Route::post('Delete_attachment',[StudentController::class,'Delete_attachment'])->name('Delete_attachment');
@@ -117,8 +115,8 @@ Route::group(
 		Route::resource('questions',QuestionController::class);
 
 		Route::resource('online_classes', OnlineClasseController::class);
-		Route::get('/indirect', [OnlineClasseController::class,'indirectCreate'])->name('indirect.create');
-        Route::post('/indirect', [OnlineClasseController::class,'storeIndirect'])->name('indirect.store');
+		Route::get('/indirect_admin', [OnlineClasseController::class,'indirectCreate'])->name('indirect.create.admin');
+        Route::post('/indirect_admin', [OnlineClasseController::class,'storeIndirect'])->name('indirect.store.admin');
 
 		///library
 		Route::resource('library', LibraryController::class);

@@ -42,7 +42,6 @@ class ClassroomController extends Controller
     $List_Classes = $request->List_Classes;
 
     try {
-
       $validated = $request->validated();
       foreach ($List_Classes as $List_Class) {
 
@@ -125,6 +124,7 @@ class ClassroomController extends Controller
 
   public function delete_all(Request $request)
   {
+    //"on,2,4,5"
       $delete_all_id = explode(",", $request->delete_all_id);
 
       Classroom::whereIn('id', $delete_all_id)->Delete();

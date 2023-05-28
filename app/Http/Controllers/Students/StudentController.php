@@ -25,16 +25,7 @@ class StudentController extends Controller
         return $this->Student->Get_Student();
     }
 
-    //get grade classrooms 
-    public function Get_classrooms($id)
-    {
-        return $this->Student->Get_classrooms($id);
-    }
-    //get classrooms sections
-    public function Get_Sections($id)
-    {
-        return $this->Student->Get_Sections($id);
-    }
+  
 
     /**
      * Show the form for creating a new resource.

@@ -7,6 +7,7 @@ use App\Http\Traits\MeetingZoomTrait;
 use App\Models\Grade;
 use App\Models\online_classe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineClasseController extends Controller
@@ -19,7 +20,7 @@ class OnlineClasseController extends Controller
      */
     public function index()
     {
-        $online_classes = online_classe::all();
+        $online_classes = online_classe::where('created_by',auth()->user()->email)->get();
         return view('pages.online_classes.index', compact('online_classes'));
     }
 
@@ -49,7 +50,7 @@ class OnlineClasseController extends Controller
                 'Grade_id' => $request->Grade_id,
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
-                'user_id' => auth()->user()->id,
+                'created_by' => auth()->user()->email,
                 'meeting_id' => $meeting->id,
                 'topic' => $request->topic,
                 'start_at' => $request->start_time,
@@ -83,7 +84,7 @@ class OnlineClasseController extends Controller
                 'Grade_id' => $request->Grade_id,
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
-                'user_id' => auth()->user()->id,
+                'created_by' => auth()->user()->email,
                 'meeting_id' => $request->meeting_id,
                 'topic' => $request->topic,
                 'start_at' => $request->start_time,

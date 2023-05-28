@@ -68,13 +68,11 @@
                             @else
                                 <?php $List_Classes = $My_Classes; ?>
                             @endif
-                            <?php $i = 0; ?>
                             @foreach ($List_Classes as $My_Class)
                                 <tr>
-                                    <?php $i++; ?>
                                     <td><input type="checkbox" value="{{ $My_Class->id }}" class="box1">
                                     </td>
-                                    <td>{{ $i }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $My_Class->Name_Class }}</td>
                                     <td>{{ $My_Class->Grades->Name }}</td>
                                     <td>
@@ -137,11 +135,11 @@
                                                             :</label>
                                                         <select class="form-control form-control-lg"
                                                             id="exampleFormControlSelect1" name="Grade_id">
-                                                            <option value="{{ $My_Class->Grades->id }}">
+                                                            {{-- <option value="{{ $My_Class->Grades->id }}">
                                                                 {{ $My_Class->Grades->Name }}
-                                                            </option>
+                                                            </option> --}}
                                                             @foreach ($Grades as $Grade)
-                                                                <option value="{{ $Grade->id }}">
+                                                                <option value="{{ $Grade->id }}" {{$Grade->id==$My_Class->Grades->id? 'selected':''}}>
                                                                     {{ $Grade->Name }}
                                                                 </option>
                                                             @endforeach
@@ -265,7 +263,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <label for="Name_en"
+                                                <label for="dele"
                                                     class="mr-sm-2">{{ trans('My_Classes_trans.Processes') }}
                                                     :</label>
                                                 <input class="btn btn-danger btn-block" data-repeater-delete
